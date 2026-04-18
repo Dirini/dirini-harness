@@ -13,7 +13,7 @@ echo "  target: $CLAUDE_HOME"
 echo ""
 
 # 디렉토리 보장
-mkdir -p "$CLAUDE_HOME"/{skills,hooks,rules,templates,agents}
+mkdir -p "$CLAUDE_HOME"/{skills,hooks,rules,templates,agents,plugins}
 
 # 기존 CLAUDE.md 백업
 if [ -f "$CLAUDE_HOME/CLAUDE.md" ] && [ ! -L "$CLAUDE_HOME/CLAUDE.md" ]; then
@@ -25,6 +25,11 @@ fi
 link_file() {
   local src="$1"
   local dst="$2"
+  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+    local backup="${dst}.backup.$(date +%Y%m%d%H%M%S)"
+    echo "⚠️  기존 경로를 $backup 로 백업합니다."
+    mv "$dst" "$backup"
+  fi
   if [ -L "$dst" ]; then rm "$dst"; fi
   ln -s "$src" "$dst"
   echo "  ✓ $dst → $src"
@@ -60,11 +65,19 @@ link_dir_contents "$REPO_ROOT/templates" "$CLAUDE_HOME/templates"
 echo "→ agents/ 링크 생성"
 link_dir_contents "$REPO_ROOT/agents" "$CLAUDE_HOME/agents"
 
+if [ -d "$REPO_ROOT/plugins" ]; then
+  echo "→ bundled plugins/ 링크 생성"
+  link_dir_contents "$REPO_ROOT/plugins" "$CLAUDE_HOME/plugins"
+fi
+
 echo ""
 echo "✅ 설치 완료"
 echo ""
 echo "다음으로 할 것:"
 echo "  1. ~/.claude/settings.json 에 훅을 연결하세요 (settings.example.json 참고)"
 echo "  2. CLAUDE.md 하단 템플릿을 참고해 '나는 누구인가' 섹션을 본인에 맞게 추가"
-echo "  3. hooks/session-start-guide.sh 의 DOMAIN 매핑을 본인 프로젝트에 맞게 수정"
+echo "  3. bundled plugin 으로 clarify / session-wrap 을 바로 써보세요"
+echo "     - /clarify"
+echo "     - /wrap"
+echo "  4. hooks/session-start-guide.sh 의 DOMAIN 매핑을 본인 프로젝트에 맞게 수정"
 echo "     또는 export CLAUDE_PROJECT_ROOT=\"\$HOME/path/to/main\" 환경변수 설정"

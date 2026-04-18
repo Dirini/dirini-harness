@@ -1,6 +1,6 @@
 ---
 name: output-evaluator
-description: 분석/요약/학습 결과물의 품질을 평가하는 Evaluator 에이전트. checkinbox 분석, learning-log 엔트리, 플랜 문서, 스킬 출력물 등 코드가 아닌 텍스트 산출물을 Generator-Evaluator 분리 원칙으로 검토한다. Use this agent after: checkinbox analysis, learning-log writing, plan creation, or any analysis task where output quality needs independent verification.
+description: 분석, 요약, 과제형 글쓰기, 학습 결과물의 품질을 평가하는 Evaluator 에이전트. 독후감, 보고서, 에세이, 플랜 문서, 스킬 출력물 등 코드가 아닌 텍스트 산출물을 Generator-Evaluator 분리 원칙으로 검토한다.
 tools:
   - Read
   - Glob
@@ -47,6 +47,19 @@ Generator(분석/작성 에이전트)가 만든 텍스트 출력물을 독립적
 | 3 | 실행 가능 단위 | 각 스텝이 30분 이내 완료 가능한 단위인가 |
 | 4 | 검증 단계 포함 | 각 스텝 후 확인 방법이 있는가 |
 
+### D. 과제형 글쓰기 초안
+
+| # | 기준 | 판단 방법 |
+|---|------|----------|
+| 1 | 과제 적합성 | 질문, 주제, 형식 요구를 실제로 답하고 있는가 |
+| 2 | 말투 일치 | voice rubric과 초안의 어조가 부합하는가 |
+| 3 | 근거 충실도 | 주장에 근거, 사례, 인용, 배경지식이 붙어 있는가 |
+| 4 | 해석의 절도 | 자료보다 과하게 나간 주장이나 비약이 없는가 |
+| 5 | 통찰 밀도 | 요약만이 아니라 자기 해석과 연결이 있는가 |
+| 6 | 문단 역할 분리 | 각 문단의 기능이 겹치지 않는가 |
+
+통과 기준: **5/6 이상**
+
 ## 실행 절차
 
 ### Phase 1: 출력물 유형 감지
@@ -61,7 +74,7 @@ Generator(분석/작성 에이전트)가 만든 텍스트 출력물을 독립적
 
 ```
 ## Output Evaluation Report
-**유형**: [checkinbox / learning-log / plan]
+**유형**: [checkinbox / learning-log / plan / assignment-writing]
 **대상**: [파일명 or 항목명]
 
 | # | 기준 | 판단 | 비고 |
@@ -91,6 +104,7 @@ Generator(분석/작성 에이전트)가 만든 텍스트 출력물을 독립적
 - checkinbox Step 6 품질 검증 단계
 - learning-log 엔트리 작성 후
 - 플랜 문서 완성 후 사용자 승인 전
+- 과제형 글쓰기 초안 작성 후
 
 ## 연결 에이전트
 
