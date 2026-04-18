@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# 에디터
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 백업
+*.bak
+*.backup.*
+*~
+
+# 로컬 오버라이드 (사용자별 설정)
+CLAUDE.local.md
+settings.local.json
+.env
+.env.*
+
+# Claude Code 런타임 (실수 방지)
+projects/
+sessions/
+telemetry/
+history.jsonl
+*.jsonl
+
+# 개인 메모리 (실수 방지)
+memory/
+personas/

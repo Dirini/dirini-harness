@@ -1,0 +1,10 @@
+[
+  {"query": "inbox 확인해줘", "should_trigger": true},
+  {"query": "오늘 inbox 정리해줘", "should_trigger": true},
+  {"query": "새 자료 확인", "should_trigger": true},
+  {"query": "inbox에 뭐 들어왔어?", "should_trigger": true},
+  {"query": "학습 자료 처리해줘", "should_trigger": true},
+  {"query": "이메일 확인해줘", "should_trigger": false},
+  {"query": "파일 정리해줘", "should_trigger": false},
+  {"query": "코드 리뷰해줘", "should_trigger": false}
+]
