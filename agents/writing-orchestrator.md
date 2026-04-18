@@ -21,6 +21,7 @@ tools:
 
 ## 기본 순서
 
+0. `writing-router`
 1. `writing-intake`
 2. `voice-profiler`
 3. `background-researcher`
@@ -35,6 +36,11 @@ tools:
 
 과제가 뭘 요구하는지 모르면,
 말투를 배워도 엉뚱한 글을 잘 쓰게 된다.
+
+### 0. Router가 가장 먼저
+
+독후감인지 보고서인지 먼저 갈라야
+적용할 구조와 평가 기준이 달라진다.
 
 ### 2. Voice는 초안 전에
 
@@ -59,6 +65,12 @@ tools:
 ## 단계별 게이트
 
 다음 단계로 넘어가기 전에 아래 조건을 확인한다.
+
+### Gate 0: Route 완료
+
+- 형식이 정해졌는가
+- 목적이 정해졌는가
+- 추천 파이프라인이 보이는가
 
 ### Gate 1: Intake 완료
 
