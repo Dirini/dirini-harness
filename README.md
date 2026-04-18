@@ -130,6 +130,65 @@ Claude Code 설정 파일을 직접 수정하거나, 기존 `settings.json`에 `
 
 ---
 
+## 권장 추가 설치
+
+`dirini-harness`는 단독으로도 쓸 수 있지만, 아래 플러그인을 함께 설치하면 훨씬 자연스럽게 이어집니다.
+
+### 1. superpowers
+
+워크플로우를 더 세밀하게 나누고, 계획, 디버깅, 협업 패턴을 강화하고 싶다면 추천합니다.
+
+```bash
+/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace
+```
+
+설치 후 기대할 수 있는 것:
+
+- 더 풍부한 워크플로우 스킬 세트
+- 계획, 실행, 디버깅, 협업 관련 명령 확장
+- 세션 시작 시 보조 컨텍스트 주입
+
+### 2. clarify
+
+모호한 요청을 객관식 질문으로 좁혀서 명세로 바꾸는 플러그인입니다.
+제가 이 레포에서 중요하게 보는 "생각을 먼저 명확히 하기" 흐름과 가장 잘 맞습니다.
+
+```bash
+/plugin marketplace add team-attention/plugins-for-claude-natives
+/plugin install clarify
+```
+
+설치 후 바로 써볼 것:
+
+- `/clarify`
+- `요구사항 명확히 해줘`
+- `내가 뭘 원하는 건지 정리해줘`
+
+### 3. session-wrap
+
+세션 마무리, 히스토리 분석, 다음 액션 정리에 강한 플러그인입니다.
+`checkpoint`와 같이 쓰면 "오늘 한 일 정리 → 다음 세션 이어가기"가 더 탄탄해집니다.
+
+```bash
+/plugin marketplace add team-attention/plugins-for-claude-natives
+/plugin install session-wrap
+```
+
+설치 후 바로 써볼 것:
+
+- `/wrap`
+- `/session-wrap`
+
+추천 조합:
+
+- 작업 시작 전: `clarify`
+- 긴 작업 중간: `checkpoint`
+- 세션 끝날 때: `session-wrap`
+- 더 강한 워크플로우가 필요할 때: `superpowers`
+
+---
+
 ## 설치 후 해야 할 3가지
 
 ### ① 본인 CLAUDE.md 완성
@@ -230,6 +289,7 @@ dirini-harness/
 이 레포는 단독으로도 쓸 수 있지만, 아래와 함께 쓰면 더 좋습니다.
 
 - `superpowers`: 더 강한 워크플로우 오케스트레이션이 필요할 때
+- `clarify`: 요구사항을 객관식 질문으로 정리하고 싶을 때
 - `session-wrap`: 세션 마감과 인수인계 흐름을 더 촘촘하게 만들 때
 - 본인 프로젝트 전용 스킬: 회사 리서치, 도메인 분석, 내부 문서 요약 등
 
